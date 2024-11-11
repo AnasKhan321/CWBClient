@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-
+import Inter from "next/font"; 
+import {Toaster  }  from "react-hot-toast"
+import ReactQueryClient  from "@/Providers/ReactQueryClient"
+import Navbar from "@/ClientComponents/Navbar";
+import Footer from "@/ClientComponents/Footer"
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -24,12 +28,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+
+    <ReactQueryClient>
+
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      > <Navbar/>
+              {/* <Toaster
+                position="top-center"
+                reverseOrder={false}
+              /> */}
         {children}
+        <Footer/> 
+
       </body>
     </html>
+
+    </ReactQueryClient>
   );
 }
